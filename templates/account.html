@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    {% block base_head %}
+        <title>Account Details</title>
+    {% endblock %}
+    <style>
+        .container{
+            width:500px;
+        }
+        .form-control{
+            border-radius:10px;
+        }
+
+    </style>
+</head>
+<body>
+    {% block base_body %}
+        <div class="container" style="width:400px">
+         <div style="text-align: center"><h1>Account Details...</h1></div>
+        <h1 style="color: #1c7430">{{ mess }}</h1><br />
+            <form action="{% url 'account' %}" method="POST" style="align:center;width:300px; length:30px;">
+                {% csrf_token %}
+                <div class="form-group" style="align:center">
+                    <label for="name">First Name: </label>
+                    <input type="text" value="{{ uobj.ufname }}" name="ufname" maxlength="20" class="form-control" required style="border-radius:10px;"/>
+                </div>
+                <div class="form-group">
+                    <label for="name">Second Name: </label>
+                    <input type="text" value="{{ uobj.usname }}" name="usname" maxlength="20" class="form-control" required style="border-radius:10px;"/>
+                </div>
+                <div class="form-group">
+                    <label for="name">Username: </label>
+                    <input disabled="disabled" value="{{ uobj.uname }}" type="text" name="uname" id="uname" maxlength="20" class="form-control" required style="border-radius:10px;"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email address: </label>
+                    <input disabled="disabled" value="{{ uobj.umail }}" type="email" class="form-control" name="umail" style="border-radius:10px;"/>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password: </label>
+                    <input type="password" value="{{ uobj.upass }}" name="upass" class="form-control" required style="border-radius:10px;"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Phone Number: </label>
+                    <input type="text" value="{{ uobj.uphone }}" name="uphone" maxlength="10" class="form-control" required style="border-radius:10px;"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Mailing Address: </label><br />
+                    <textarea class="form-control" name="uaddr" rows="5" required style="border-radius:10px;">{{ uobj.uaddr }} </textarea>
+                </div>
+                <input type="submit" class="btn btn-success" value="Update" style="border-radius:10px; background-color:green;"/>
+            </form></br></br></br></br>
+        </div>
+
+    {% endblock %}
+
+</body>
+</html>

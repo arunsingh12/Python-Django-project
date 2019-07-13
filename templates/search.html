@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block base_head %}
+        <title>Search Results</title>
+    {% endblock %}
+</head>
+<body>
+{% block base_body %}
+    <h2>Search Results...</h2>
+    <h4>Search results for '{{ sval }}'</h4>
+    <div class="container">
+        <div class="col-sm-12">
+        <h2>{{ mess }}</h2>
+            {% for x in bobj %}
+                {% if x.Prod_manufacture == sval or x.Prod_genre == sval or x.Prod_title == sval or x.Prod_weight == sval %}
+
+                    {% if x.Prod_manufacture == sval %}
+                        <div class="row">
+                <div class="col-sm-10" style="padding:10px; margin-top: 10px; border-bottom:1px solid #C0C0C0; height:250px">
+                    <div class="row">
+                        <div class="col-sm-3"  style=" height: 210px; background-repeat:no-repeat; background-size:cover;">
+                            <img src="../..{{ x.Prod_image.url }}" style=" height: 210px; width:200px;" alt="image"/>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row"><div class="col-sm-12"><a href="{% url 'sprod' prod_id=x.id %}"><h2>{{ x.Prod_title }}</h2></a></div></div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h4>model - {{ x.Prod_model_no }}</h4>
+                                    <h4>manufacture - {{ x.Prod_manufacture }}</h4>
+                                    <h4>weight - {{ x.Prod_weight }}</h4>
+                                    <h4>Price - {{ x.Prod_price }} Rs</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4>Rating - {{ x.Prod_rating }} out of 5</h4>
+                                    <h4>Genre - {{ x.Prod_genre }}</h4>
+                                    <h4>Year - {{ x.Prod_year }}</h4>
+                                    <h4>items Available - {{ x.Prod_no_of_items }}</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4>Description :- </h4>
+                                    <div style="overflow-y: scroll; height:100px;" >
+                                        <p>{{ x.Prod_description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+                    {% endif %}
+
+                    {% if x.Prod_genre == sval %}
+                        <div class="row">
+                <div class="col-sm-10" style="padding:10px; margin-top: 10px; border-bottom:1px solid #C0C0C0; height:250px">
+                    <div class="row">
+                        <div class="col-sm-3"  style=" height: 210px; background-repeat:no-repeat; background-size:cover;">
+                            <img src="../..{{ x.Prod_image.url }}" style=" height: 210px; width:200px;" alt="image"/>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row"><div class="col-sm-12"><a href="{% url 'sprod' prod_id=x.id %}"><h2>{{ x.Prod_title }}</h2></a></div></div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h4>ID - {{ x.id }}</h4>
+                                    <h4>manufacture - {{ x.Prod_manufacture }}</h4>
+                                    <h4>weight - {{ x.Prod_weight }}</h4>
+                                    <h4>model_no - {{ x.Prod_model_no }}</h4>
+                                    <h4>Price - {{ x.Prod_price }} Rs</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4>Rating - {{ x.Prod_rating }} out of 5</h4>
+                                    <h4>Genre - {{ x.Prod_genre }}</h4>
+                                    <h4>Year - {{ x.Prod_year }}</h4>
+
+                                    <h4>items Available - {{ x.Prod_no_of_items }}</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4>Description :- </h4>
+                                    <div style="overflow-y: scroll; height:100px;" >
+                                        <p>{{ x.Prod_description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+                    {% endif %}
+
+                    {% if x.Prod_title == sval %}
+                        <div class="row">
+                <div class="col-sm-10" style="padding:10px; margin-top: 10px; border-bottom:1px solid #C0C0C0; height:250px">
+                    <div class="row">
+                        <div class="col-sm-3"  style=" height: 210px; background-repeat:no-repeat; background-size:cover;">
+                            <img src="../..{{ x.Prod_image.url }}" style=" height: 210px; width:200px;" alt="image"/>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row"><div class="col-sm-12"><a href="{% url 'sprod' prod_id=x.id %}"><h2>{{ x.Prod_title }}</h2></a></div></div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h4>ID - {{ x.id }}</h4>
+                                    <h4>manufacture - {{ x.Prod_manufacture }}</h4>
+                                    <h4>weight - {{ x.Prod_weight }}</h4>
+                                    <h4>model_no - {{ x.Prod_model_no }}</h4>
+                                    <h4>Price - {{ x.Prod_price }} Rs</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4>Rating - {{ x.Prod_rating }} out of 5</h4>
+                                    <h4>Genre - {{ x.Prod_genre }}</h4>
+                                    <h4>Year - {{ x.Prod_year }}</h4>
+
+
+                                    <h4>items Available - {{ x.Prod_no_of_items }}</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4>Description :- </h4>
+                                    <div style="overflow-y: scroll; height:100px;" >
+                                        <p>{{ x.Prod_description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+                    {% endif %}
+
+                    {% if x.Prod_weight == sval %}
+                        <div class="row">
+                <div class="col-sm-10" style="padding:10px; margin-top: 10px; border-bottom:1px solid #C0C0C0; height:250px">
+                    <div class="row">
+                        <div class="col-sm-3"  style=" height: 210px; background-repeat:no-repeat; background-size:cover;">
+                            <img src="../..{{ x.Prod_image.url }}" style=" height: 210px; width:200px;" alt="image"/>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row"><div class="col-sm-12"><a href="{% url 'sprod' prod_id=x.id %}"><h2>{{ x.Prod_title }}</h2></a></div></div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h4>ID - {{ x.id }}</h4>
+                                    <h4>manufacture - {{ x.Prod_manufacture }}</h4>
+                                    <h4>weight - {{ x.Prod_weight }}</h4>
+                                    <h4>model_no - {{ x.Prod_model_no }}</h4>
+                                    <h4>Price - {{ x.Prod_price }} Rs</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4>Rating - {{ x.Prod_rating }} out of 5</h4>
+                                    <h4>Genre - {{ x.Prod_genre }}</h4>
+                                    <h4>Year - {{ x.Prod_year }}</h4>
+
+
+                                    <h4>items Available - {{ x.Prod_no_of_items }}</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4>Description :- </h4>
+                                    <div style="overflow-y: scroll; height:100px;" >
+                                        <p>{{ x.Prod_description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+                    {% endif %}
+
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registre user view</title>
+    <link href="{% static 'css/jinja.css' %}" rel="stylesheet">
+    <style>
+        body{
+            background-color:#F5F5DC;
+        }
+    </style>
+</head>
+<body>
+<h1>Register User List is.....!!</h1>
+{% if slist %}
+<table border="1px" style="width:100%; hight:200%;">
+    <thead>
+    <th>USER FIRST NAME</th>
+    <th>USER SECONd NAME</th>
+    <th>USER NAME</th>
+    <th>USER MAIL</th>
+    <th>USER PASSWORD</th>
+    <th>USER PHONE</th>
+    <th>USER ADDRESS</th>
+    <th>USER TYPE</th>
+
+    </thead>
+    {% for std in slist %}
+    <tr>
+        <th>{{std.ufname}}</th>
+        <th>{{std.usname}}</th>
+        <th>{{std.uname}}</th>
+        <th>{{std.umail}}</th>
+        <th>{{std.upass}}</th>
+        <th>{{std.uphone}}</th>
+        <th>{{std.uaddr}}</th>
+        <th>{{std.utype}}</th>
+
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h2>SORRY NO RECORDS FOUND.......!!</h2>
+{% endif %}
+</body>
+</html>

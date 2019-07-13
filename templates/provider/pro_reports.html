@@ -1,0 +1,56 @@
+{% extends 'provider/pro_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    {% block pro_head %}
+        <title>My Product</title>
+    {% endblock %}
+</head>
+<body>
+    {% block pro_body %}
+        {% if dis == 'yes' %}
+            <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                    {% for n in cobj %}
+                        {% for x in bobj %}
+                            {% if n.c_Prod_id == x.id and n.cstat == 'yes' %}
+                                <div class="row">
+                <div class="col-sm-12" style="padding:10px; margin-top: 10px; border-bottom:1px solid #C0C0C0; height:250px">
+                    <div class="row">
+                        <div class="col-sm-3"  style=" height: 210px; background-repeat:no-repeat; background-size:cover;">
+                            <img src="{{ x.Prod_image.url }}" style=" height: 210px; width:200px;" alt="image"/>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row"><div class="col-sm-12"><h2 style="color:blue;">{{ x.Prod_title }}</h2></div></div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h4>manufacture - {{ x.Prod_manufacture }}</h4>
+                                    <h4>weight - {{ x.Prod_weight }}</h4>
+                                    <h4>model_no - {{ x.Prod_model_no }}</h4>
+                                </div>
+                                <div class="col-sm-5">
+                                    <h4>Usermail - {{ n.c_Prod_mail }}</h4>
+                                    <h4>No of items - {{ n.cno }}</h4>
+                                    <h4 style="color:red;">Price - {{ x.Prod_price }} Rs</h4style>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+        </div>
+        {% else %}
+            <h2>No reports to display</h2>
+        {% endif %}
+    {% endblock %}
+</body>
+</html>

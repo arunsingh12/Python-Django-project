@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'mycss/index.css'%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+.navbar{
+    font-family:thahoma;
+    background-color:lightblue;
+    position:;
+    text-color:black;
+    }
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #000000;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #FFB6C1;
+}
+.footer {
+    margin:30px
+    padding:10px;
+   position:;
+   left: ;
+   bottom: 0;
+   width: 100%;
+   background-color: #000000;
+   color: white;
+   text-align: center;
+
+    </style>
+
+    {% block base_head %}
+    {% endblock %}
+
+</head>
+<body>
+
+    <nav class="navbar  ">
+
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+         <b> <a class="navbar-brand" href="{% url 'index' %}">TRaNDySHoP.com</a></b>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left" method="POST" action="{% url 'search' %}">{% csrf_token %}
+            <div class="form-group">
+              <input type="text" style="width: 400px; border-radius:10px;" class="form-control" name="sval" maxlength="150" placeholder="Search: Title; Genre">
+            </div>
+            <input type="submit"  class="btn btn-info" value="Search"/>
+          </form>
+
+           {% if tfmess == 'False' %}
+          <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'index' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+              <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="{% url 'reg' %}"><span class="glyphicon glyphicon-sign-up"></span>Register</a></li>
+          </ul>
+            {% endif %}
+            {% if tfmess == 'True' %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'index' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li><a href="{% url 'account' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="{% url 'orders' %}">Orders</a></li>
+            <li><a href="{% url 'cart' %}"> <span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            <li><a href="{% url 'logout' %}"> <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            <li>{{uname}}</li>
+            </ul>
+            {% endif %}
+        </div>
+      </div>
+    </nav>
+
+
+    {% block base_body %}
+
+    {% endblock %}
+    <script>
+                    // When the user scrolls down 20px from the top of the document, show the button
+                    window.onscroll = function() {scrollFunction()};
+
+                    function scrollFunction() {
+                      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("myBtn").style.display = "block";
+                      } else {
+                        document.getElementById("myBtn").style.display = "none";
+                      }
+                    }
+
+                    // When the user clicks on the button, scroll to the top of the document
+                    function topFunction() {
+                      document.body.scrollTop = 0;
+                      document.documentElement.scrollTop = 0;
+                    }
+                    </script>
+                    <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-chevron-up"></span>Top</button>
+<footer>
+<div class="footer">
+				<div class="container">
+                    <p>Copyright-2019</p>
+                    <p>All right reserved by TRaNDySHoP.com</p>
+				</div>
+			</div>
+</footer>
+</body>
+</html>

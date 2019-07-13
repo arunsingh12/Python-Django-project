@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    {% block base_head %}
+
+    {% endblock %}
+</head>
+<body>
+    {% block base_body %}
+        <div class="container d-flex justify-content-between">
+            <div class="row" style="text-align: center">
+            {% for x in cateobj %}
+                <div class="col-sm-3 d-flex justify-content-between">
+                    <div class="row"><div class="col-sm-12">
+                        <a href="{% url 'cate' prod_id=x.id %}" >
+                            <img src='{{ x.cate_img.url }}' style="height:250px;width:200px;"/>
+                            <h4>{{ x.cate_name }}</h4>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+        </div>
+        </div>
+<footer class="up">
+<a class="up scroll" href="#top-top"><span> </span></a>
+</footer>
+    {% endblock %}
+</body>
+</html>
